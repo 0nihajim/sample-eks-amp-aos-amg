@@ -7,7 +7,6 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
   name: my-collector
-  namespace: adot
 spec:
   mode: deployment
   serviceAccount: adot-collector
@@ -380,4 +379,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: adot-collector
-    namespace: adot
+    namespace: default
