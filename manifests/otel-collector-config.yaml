@@ -316,6 +316,10 @@ spec:
       batch/traces:
         timeout: 1s
         send_batch_size: 50
+      resourcedetection/eks:
+        detectors: [env, eks]
+        timeout: 2s
+        override: false
 
     exporters:
       prometheusremotewrite:
@@ -334,7 +338,7 @@ spec:
           exporters: [prometheusremotewrite]
         traces:
           receivers: [otlp]
-          processors: [batch/traces]
+          processors: [batch/traces, resourcedetection/eks]
           exporters: [awsxray]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
